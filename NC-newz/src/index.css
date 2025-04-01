@@ -67,22 +67,74 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-.loading {
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 10px;
+}
+.user-container {
   display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: center; /* center vertically (if container has height) */
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #646cff;
+  align-items: center;
+  gap: 8px; 
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-container:hover {
+  background-color: #f0f0f0; 
+}
+.header {
+  font-family: Verdana,Sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+  margin: 1rem 0;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.username {
+  font-size: 1.2rem;
+  color: #555;
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #e074f0;
   border-radius: 50%;
   width: 30px;
-  height:30px;
-  animation: spin 2s linear infinite;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+  display: block;
 }
+
 @keyframes spin {
-  0% {transform: rotate(0deg);}
-  100% {transform: rotate(360geg);}
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
+
 .post {
   display: flex;
   background-color: #ffffff;
@@ -121,7 +173,7 @@ button:focus-visible {
 .post-topic {
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-size: 2em;
-  color: #3146c2;
+  color: #007bff;
   font-weight: bold;
   margin: 0 0 10px;
 }
@@ -155,5 +207,48 @@ button:focus-visible {
   font-size: 0.9em;
   color: #6c757d;
   margin-top: 10px;
+}
+.search-bar {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  color: #333;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input {
+  padding: 0.5rem 1rem;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button i {
+  font-size: 1rem;
 }
 

@@ -20,10 +20,9 @@ export const HomePosts = () => {
         })
     }, [])
 
-    if (isLoading) return <h1 className="loading"></h1>
+    if (isLoading) return <div className="loader-container"><h1 className="loader"></h1></div> 
     
     if (isError) return <p className="error">something went wrong</p>
-    console.log(posts)
 
     return posts.map((post)=>{
        return <article  className="post" key={post.article_id}>

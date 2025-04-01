@@ -13,7 +13,7 @@ export const SearchBar = ({setSearchTerm}) => {
     return <form onSubmit={handleSubmit}>
         <label className="search-bar">Explore</label>
         <input onChange={handleChange} className="input"></input>
-        <button type="submit" >*searchIconimg</button>
+        <button type="submit" ><i className="fa fa-search"></i></button>
     </form>
 }
 

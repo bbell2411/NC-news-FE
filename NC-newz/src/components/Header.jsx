@@ -8,9 +8,10 @@ export const Header = () => {
 
     return <section>
         <h1 className="header">NC News</h1>
-        <h3>{loggedInUser}</h3>
+        <div className="user-container">
+            <img src='https://pbs.twimg.com/media/ErnRoKiXMAIqwGf.jpg' alt="user profile image" className="profile-pic" />
+            <h3 className="username">{loggedInUser}</h3>
+        </div>
         <SearchBar setSearchTerm={setSearchTerm} />
     </section>
 }
-//FETCH WITH SEARCH TERM AFTER MAKING FETCH FOR HOME PAGE
-// AND AVATAR URL
