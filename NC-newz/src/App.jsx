@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import './App.css'
 import { Header } from './components/Header'
+import { UserProvider } from '../Contexts/User'
+import { HomePosts } from './components/HomePosts'
 
 function App() {
-  return <Header/>
+  return <><UserProvider><Header/></UserProvider>
+  <HomePosts />
+  </>
 }
 
 export default App
