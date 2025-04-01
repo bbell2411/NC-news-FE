@@ -1,3 +1,4 @@
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -66,3 +67,93 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.loading {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically (if container has height) */
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #646cff;
+  border-radius: 50%;
+  width: 30px;
+  height:30px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360geg);}
+}
+.post {
+  display: flex;
+  background-color: #ffffff;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.187);
+  width: 80%;
+  max-width: 800px;
+}
+
+.post-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.post-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.post-title {
+ font-family: Georgia, 'Times New Roman', Times, serif;
+ font-weight: bolder;
+  font-size: 1cm;
+  color:#0d0000;
+  margin: 0 0 10px;
+  text-decoration-line:overline;
+}
+
+.post-topic {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2em;
+  color: #3146c2;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+.post-votes,
+.post-author,
+.post-comments {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.post-votes {
+  color: #fa801b;
+}
+
+.post-author,
+.post-comments {
+  font-weight: bold;
+  color: #00060b;
+}
+
+.post-body {
+  font-size: 1.1em;
+  margin-top: 15px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.post-created-at {
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-top: 10px;
+}
+
