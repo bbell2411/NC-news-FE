@@ -6,7 +6,21 @@ const newsApi = axios.create({
 
 export const getArticles = () => {
     return newsApi.get('/articles')
-    .then(({data})=>{
-        return data
+        .then(({ data }) => {
+            return data
+        })
+}
+
+export const getArticle = (article_id) => {
+    return newsApi.get(`/articles/${article_id}`)
+    .then(({data:{article}})=>{
+        return article
+        })
+}
+
+export const getUser= () =>{
+    return newsApi.get('/users')
+    .then(({data:{users}})=>{
+       return users
     })
 }
