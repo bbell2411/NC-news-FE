@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getArticle, getUser } from "./api"
+import { ArticleCard } from "./ArticleCard";
 
 export const SingleArticle = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -38,35 +39,8 @@ export const SingleArticle = () => {
                 setIsLoading(false)
             })
     }, [article])
-
-    const userPfpArr = userImage.map((user) => {
-        return user.username === article.author ? user.avatar_url : null
-    })
-    let profilePic = ''
-    for (let i = 0; i < userPfpArr.length; i++) {
-        if (userPfpArr[i] !== null) {
-            profilePic = userPfpArr[i]
-        }
-    }
     if (isLoading) return <div className="loader-container"><h1 className="loader"></h1></div>
 
     if (error) return <p className="error">something went wrong</p>
-
-    return (
-        <div className="article-container">
-            <h1 className="article-title">{article.title}</h1>
-            <p className="article-meta">
-                { profilePic !== '' ? <img src= {profilePic} alt="user's profile image"/>: null}
-                {article.author} | {article.topic} | {article.created_at}
-            </p>
-            <img
-                className="article-image"
-                src={article.article_img_url}
-                alt={article.title}
-            />
-            <p className="article-body">{article.body}</p>
-            <p className="article-votes">Votes: {article.votes} | Comments: {article.comment_count}</p>
-            <a href="/" className="back-button">Back to Home</a>
-        </div>
-    );
+ return <ArticleCard article={article} userImage={userImage} />
 };

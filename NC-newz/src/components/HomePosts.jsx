@@ -40,5 +40,3 @@ export const HomePosts = () => {
     })
 
     }
-//sort by newest
-//error handle
