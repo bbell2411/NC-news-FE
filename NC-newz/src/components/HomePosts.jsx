@@ -27,9 +27,9 @@ export const HomePosts = () => {
 
     return posts.map((post)=>{
        return <article  className="post" key={post.article_id}>
-       <Link to={`/articles/${post.article_id}`}><img className="post-image" src={post.article_img_url} alt="article image"/></Link> 
+       <Link to={`/articles/${post.article_id}`}><img className="post-image clickable" src={post.article_img_url} alt="article image"/></Link> 
       <section>
-      <Link to={`/articles/${post.article_id}`}><p className="post-title">{post.title}</p></Link>
+      <Link to={`/articles/${post.article_id}`}><p className="post-title clickable">{post.title}</p></Link>
         <p className='post-topic'>{post.topic}</p>
         <p className="post-votes" >{post.votes}</p>
         <p className="post-author" >{post.author}</p>
