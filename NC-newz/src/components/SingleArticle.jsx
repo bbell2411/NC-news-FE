@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Routes,Route, useParams } from "react-router-dom"
 import { getArticle, getUser } from "./api"
 import { ArticleCard } from "./ArticleCard";
+import { CommentCard } from "./CommentCard";
+import { ViewCommentsLink } from "./ViewCommentsLink";
 
 export const SingleArticle = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -42,5 +44,10 @@ export const SingleArticle = () => {
     if (isLoading) return <div className="loader-container"><h1 className="loader"></h1></div>
 
     if (error) return <p className="error">something went wrong</p>
- return <ArticleCard article={article} userImage={userImage} />
+ return <article><ArticleCard article={article} userImage={userImage} />
+ <section><CommentCard  article={article}/></section>
+ <Routes>
+    <Route path="/article/comments" element={<ViewCommentsLink article={article} />}></Route>
+ </Routes>
+ </article>
 };

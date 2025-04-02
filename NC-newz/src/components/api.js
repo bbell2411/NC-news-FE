@@ -13,14 +13,23 @@ export const getArticles = () => {
 
 export const getArticle = (article_id) => {
     return newsApi.get(`/articles/${article_id}`)
-    .then(({data:{article}})=>{
-        return article
+        .then(({ data: { article } }) => {
+            return article
         })
 }
 
-export const getUser= () =>{
+export const getUser = () => {
     return newsApi.get('/users')
-    .then(({data:{users}})=>{
-       return users
-    })
+        .then(({ data: { users } }) => {
+            return users
+        })
+}
+
+export const getComments = (article_id) => {
+    if (article_id !== undefined) {
+        return newsApi.get(`/articles/${article_id}/comments`)
+            .then(({ data: { comment } }) => {
+                return comment
+            })
+    }
 }
