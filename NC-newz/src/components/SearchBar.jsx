@@ -7,7 +7,8 @@ export const SearchBar = ({setSearchTerm}) => {
         setInput(e.target.value)
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         setSearchTerm(input)
     }
     return <form onSubmit={handleSubmit}>
