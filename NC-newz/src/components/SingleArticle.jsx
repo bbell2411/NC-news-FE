@@ -43,3 +43,4 @@ export const SingleArticle = ({article, setArticle, userImage, setUserImage}) =>
     return <article><ArticleCard article={article} userImage={userImage} />
     </article>
 };
+
