@@ -328,3 +328,56 @@ button i {
   font-size: 1rem;
 }
 
+
+
+.comments-section {
+  margin: 10px 0;
+  padding: 12px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  position: relative;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment p {
+  margin: 0;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.comment-button {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.comment img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.comment-button:hover {
+  background-color: #0056b3;
+}
+.comment-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.comment-user {
+  font-weight: bold;
+}
