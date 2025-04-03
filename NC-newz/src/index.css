@@ -84,6 +84,7 @@ h1 {
 }
 
 .article-votes {
+  color:#00060b;
   font-weight: bold;
   margin: 0.5rem 0;
 }
@@ -380,4 +381,14 @@ button i {
 }
 .comment-user {
   font-weight: bold;
+}
+.icon-link {
+  color: #ffffff;
+  transition: transform 0.2s ease, color 0.2s ease;
+  font-size: 1.5rem;
+}
+
+.icon-link:hover {
+  transform: scale(1.3);
+  color: #fafafa;
 }
