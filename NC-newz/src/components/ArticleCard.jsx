@@ -5,29 +5,10 @@ import { useEffect, useState } from "react";
 import { updateVotes } from "./api";
 
 export const ArticleCard = ({ article, userImage }) => {
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState(null)
-
     const [optimisticVotes, setOptimisticVotes] = useState(0)
+    const [userVote, setUserVote] = useState(0)
 
     const { article_id } = useParams()
-
-    useEffect(() => {
-        setIsLoading(true)
-        updateVotes(article_id).then((inc_votes) => {
-        })
-            .catch((err) => {
-                setError(true)
-            })
-            .finally(() => {
-                setIsLoading(false)
-            })
-    }, [])
-
-    if (isLoading) return <div className="loader-container"><h1 className="loader"></h1></div>
-
-    if (error) return <p className="error">something went wrong</p>
-
 
     const userPfpArr = userImage.map((user) => {
         return user.username === article.author ? user.avatar_url : null
@@ -38,6 +19,35 @@ export const ArticleCard = ({ article, userImage }) => {
             profilePic = userPfpArr[i]
         }
     }
+
+    const handleUpVote = () => {
+        if (userVote === 1) {
+            setOptimisticVotes((currVotes) => currVotes - 1);
+            setUserVote(0);
+        } else {
+            setOptimisticVotes((currVotes) => currVotes + (userVote === -1 ? 2 : 1));
+            setUserVote(1);
+        }
+        updateVotes(article_id).catch(() => {
+            setOptimisticVotes((currVotes) => currVotes - 1);
+            setUserVote(0);
+        });
+    };
+
+    const handleDownVote = () => {
+        if (userVote === -1) {
+            setOptimisticVotes((currVotes) => currVotes + 1);
+            setUserVote(0);
+        } else {
+            setOptimisticVotes((currVotes) => currVotes - (userVote === 1 ? 2 : 1));
+            setUserVote(-1);
+        }
+        updateVotes(article_id).catch(() => {
+            setOptimisticVotes((currVotes) => currVotes + 1);
+            setUserVote(0);
+        });
+    };
+
     return (
 
         <div className="article-container">
@@ -47,7 +57,7 @@ export const ArticleCard = ({ article, userImage }) => {
             <p className="article-meta">
                 {profilePic !== '' ? <img src={profilePic} alt="user's profile image" /> : null}
                 {article.author} | {article.topic} | {article.created_at}  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button className='icon-link'> onClick={handleUpVote}<SlLike /></button> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button onClick={handleDownVote} className='icon-link'><SlDislike /></button>
+                <button className='icon-link' onClick={handleUpVote}> <SlLike /></button> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button className='icon-link' onClick={handleDownVote}><SlDislike /></button>
             </p>
             <img
                 className="article-image"
@@ -55,14 +65,7 @@ export const ArticleCard = ({ article, userImage }) => {
                 alt={article.title}
             />
             <p className="article-body">{article.body}</p>
-            <p className="article-votes">Votes: {article.votes} | Comments: {article.comment_count}</p>
+            <p className="article-votes">Votes: {article.votes + optimisticVotes} | Comments: {article.comment_count}</p>
         </div>
     );
 }
-// vote on the article that they are reading.
-// Things to consider:
-
-// How are the current number of votes displayed?
-// How will a user increment/decrement the total number of votes?
-// Can the change in votes be rendered optimistically?
-// How will a user be alerted if the API request fails?
