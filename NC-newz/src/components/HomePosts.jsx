@@ -41,11 +41,3 @@ export const HomePosts = () => {
 
 }
 
-// see the comments linked with an individual article alongside it.
-// Things to consider:
-
-// click on comment count in home page links to comment card of that article id
-// comments inside the single article
-
-// How is a comment card presented?
-// How are the comment cards arranged to make use of the available space?
