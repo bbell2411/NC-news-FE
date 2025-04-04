@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { FaCommentDots } from "react-icons/fa";
 import { SlDislike, SlLike } from "react-icons/sl";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { updateVotes } from "./api";
 
 export const ArticleCard = ({ article, userImage }) => {
@@ -22,29 +22,29 @@ export const ArticleCard = ({ article, userImage }) => {
 
     const handleUpVote = () => {
         if (userVote === 1) {
-            setOptimisticVotes((currVotes) => currVotes - 1);
-            setUserVote(0);
+            setOptimisticVotes((currVotes) => currVotes - 1)
+            setUserVote(0)
         } else {
-            setOptimisticVotes((currVotes) => currVotes + (userVote === -1 ? 2 : 1));
-            setUserVote(1);
+            setOptimisticVotes((currVotes) => currVotes + (userVote === -1 ? 2 : 1))
+            setUserVote(1)
         }
         updateVotes(article_id).catch(() => {
-            setOptimisticVotes((currVotes) => currVotes - 1);
-            setUserVote(0);
+            setOptimisticVotes((currVotes) => currVotes - 1)
+            setUserVote(0)
         });
     };
 
     const handleDownVote = () => {
         if (userVote === -1) {
-            setOptimisticVotes((currVotes) => currVotes + 1);
-            setUserVote(0);
+            setOptimisticVotes((currVotes) => currVotes + 1)
+            setUserVote(0)
         } else {
-            setOptimisticVotes((currVotes) => currVotes - (userVote === 1 ? 2 : 1));
-            setUserVote(-1);
+            setOptimisticVotes((currVotes) => currVotes - (userVote === 1 ? 2 : 1))
+            setUserVote(-1)
         }
         updateVotes(article_id).catch(() => {
-            setOptimisticVotes((currVotes) => currVotes + 1);
-            setUserVote(0);
+            setOptimisticVotes((currVotes) => currVotes + 1)
+            setUserVote(0)
         });
     };
 
