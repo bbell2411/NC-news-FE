@@ -35,40 +35,16 @@ export const getComments = (article_id) => {
 }
 
 export const updateVotes = (article_id) => {
-    return newsApi.patch(`/articles/${article_id}`,{inc_votes:1} )
-    .then(({data})=>{
-        return data
-    })
+    return newsApi.patch(`/articles/${article_id}`, { inc_votes: 1 })
+        .then(({ data }) => {
+            return data
+        })
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export const postComment = (article_id, bodyString, loggedInUser) => {
+        return newsApi.post(`/articles/${article_id}/comments`, { username: loggedInUser, body: bodyString })
+            .then(({ data }) => {
+                console.log('d')
+                return data
+            })
+    }

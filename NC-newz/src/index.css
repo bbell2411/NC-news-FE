@@ -362,6 +362,17 @@ button i {
   border-radius: 8px;
   transition: background-color 0.3s ease;
 }
+.add-comment-button {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  text-align:center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
 
 .comment img {
   width: 32px;

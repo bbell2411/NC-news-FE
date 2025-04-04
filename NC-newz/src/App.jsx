@@ -13,17 +13,17 @@ function App() {
   const [searchTerm, setSearchTerm] = useState([])
   const [article, setArticle] = useState([])
   const [userImage, setUserImage] = useState([])
-  const [comments, setComments] = useState([])
+  const [addedComment, setAddedComment] = useState([])
+
 
   return <>
-    <UserProvider> <Header setSearchTerm={setSearchTerm} /></UserProvider>
-    <Routes>
-      <Route path="/" element={<HomePosts />}></Route>
+    <UserProvider> <Header setSearchTerm={setSearchTerm} />
+    <Routes> <Route path="/" element={<HomePosts />}></Route>
       <Route path='/articles/:article_id' element={<SingleArticle article={article} setArticle={setArticle} userImage={userImage} setUserImage={setUserImage} />}></Route>
-      <Route path='/articles/:article_id/comments' element={<CommentCard comments={comments} setComments={setComments} />}></Route>
-      <Route path='/articles/:article_id/comments/all-comments' element={<AllCommentsCard comments={comments} />}></Route>
-
+      <Route path='/articles/:article_id/comments' element={<CommentCard  addedComment={addedComment} setAddedComment={setAddedComment} />}></Route>
+      <Route path='/articles/:article_id/comments/all-comments' element={<AllCommentsCard addedComment={addedComment} />}></Route>
     </Routes>
+    </UserProvider>
 
   </>
 }
