@@ -41,10 +41,20 @@ export const updateVotes = (article_id) => {
         })
 }
 
-export const postComment = (article_id, bodyString, loggedInUser) => {
-        return newsApi.post(`/articles/${article_id}/comments`, { username: loggedInUser, body: bodyString })
+export const postComment = (article_id, addedComment, loggedInUser) => {
+    console.log('were in')
+        return newsApi.post(`/articles/${article_id}/comments`, { username: loggedInUser, body: addedComment })
             .then(({ data }) => {
-                console.log('d')
+                console.log('were in again')
                 return data
             })
     }
+// i am currently reaching line 45, need to check the colour of the bracket for template literal
+// currently, when i click submit, i am invoking a post request, however...
+// it says not found on insomnia and HERE TOO!
+// check backend (probs not the problem)
+//optimistic rendering?
+// ANYWAY PRIRITISE THE POST REQ AND FIX 404
+//also this is for later to stress about, but presenting the...
+//new comment in add comment or a diff componenet and where do i 
+//invoke it? will probs need logic to handle inside submit? not sure...

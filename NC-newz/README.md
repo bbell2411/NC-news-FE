@@ -1,12 +1,47 @@
-# React + Vite
+# NC-newz (FRONT-END)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Hosted on Render: (in progress)
+- API Server: [NC-newz-backend](https://github.com/bbell2411/NC-news)
 
-Currently, two official plugins are available:
+# Project Overview 
+NC newz is a Reddit-style news application where users can browse articles, view individual articles, up-vote/down-vote and leave comments. It is a full-stack project built with React, Express, PostgreSQL and axios.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Getting started locally
+- Latest version of Node.js installed
+- PostgreSQL installed for backend
+- Git installed
 
-## Expanding the ESLint configuration
+ # Installation
+ - Clone the repo locally with git clone <repo-url>
+ - cd into repo then INSTALL DEPENDENCIES VIA TERMINAL (npm install)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Start the frontend 
+- command: npm run dev
+- The app will be running on a localhost url in the browser
+
+# Features 
+- Browse a list of articles by topic
+- View an individual article including title, image, body, votes, comments, and author information.
+- Up-vote and down-vote articles
+- Add comments to articles
+- Responsive, user-friendly design
+
+# How to use
+- Home page: explore other user's articles by scrolling.
+- Search Bar: Search articles by keywords or titles.
+- View article: Click on the image or title to read the full article and view it's comments.
+- Comments: add your own comments to express your opinion and join the discussion.
+- Votes: Use the like and Dislike buttons to up-vote or down-vote.
+- Navigation: easily return to the home page at any time.
+
+# Tech Stack
+- Frontend: React, Axios, CSS
+- Backend: Express, PostgreSQL, Node.js, Jest, supertest
+- Hosting: Render
+
+# Future improvements
+- Add user authentication
+- Allow users to change their profile image
+- Allow users to reply to individual comments
+- Allow users to block other users
+- Allow users like and dislike individual comments

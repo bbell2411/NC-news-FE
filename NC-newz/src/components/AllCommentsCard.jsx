@@ -3,10 +3,9 @@ import { useParams } from "react-router-dom"
 import { getComments, getUser } from "./api"
 import { IoIosArrowBack } from "react-icons/io";
 import { AddComment } from "./AddComment";
-import { PostedComment } from "./PostedComment";
 
 
-export const AllCommentsCard = ({addedComment}) => {
+export const AllCommentsCard = ({ addedComment, setAddedComment }) => {
     const [allComments, setAllComments] = useState([])
 
     const [isLoading, setIsLoading] = useState(true)
@@ -48,8 +47,7 @@ export const AllCommentsCard = ({addedComment}) => {
     return <div>
         <a href={`/articles/${article_id}/comments`} className="add-comment-button"><IoIosArrowBack /></a>
 
-        <AddComment />
-        {addedComment.length > 0 ? <PostedComment addedComment={addedComment} /> : null}
+        <AddComment addedComment={addedComment} setAddedComment={setAddedComment} />
 
         {allComments.map((comment) => {
             const userPfpArr = userImg.map((user) => {

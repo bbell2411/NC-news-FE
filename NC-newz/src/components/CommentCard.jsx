@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { getComments, getUser } from "./api"
 import { Link, useParams } from "react-router-dom"
 import { AddComment } from "./AddComment"
-import { PostedComment } from "./PostedComment"
 
 
-export const CommentCard = ({addedComment,setAddedComment}) => {
+export const CommentCard = ({ addedComment, setAddedComment }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [comments, setComments] = useState([])
@@ -51,8 +50,7 @@ export const CommentCard = ({addedComment,setAddedComment}) => {
         <a href="/" className="comment-button"> <i className="fa fa-home home-icon"></i> Home</a>  &nbsp; &nbsp; &nbsp;
         <a href={`/articles/${article_id}`} className="back-button">Back to Post</a> <br /> <br />
 
-        <AddComment setAddedComment={setAddedComment} />
-        {addedComment.length>0 ? <PostedComment addedComment={addedComment} />: null}
+        <AddComment addedComment={addedComment} setAddedComment={setAddedComment} />
         {visibleComments.map((comment) => {
             const userPfpArr = userImg.map((user) => {
                 return user.username === comment.author ? user.avatar_url : null

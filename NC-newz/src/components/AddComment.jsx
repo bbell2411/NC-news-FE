@@ -1,19 +1,33 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoSendOutline } from "react-icons/io5";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../../Contexts/User";
+import { postComment } from "./api";
 
-export const AddComment = ({setAddedComment}) => {
-    const [input, setInput] = useState('')
+export const AddComment = ({ addedComment, setAddedComment }) => {
+    const [post, setPost]= useState({})
+    
+    const { article_id } = useParams()
+    const { loggedInUser } = useContext(UserContext)
 
     const handleInputChange = (e) => {
-        setInput(e.target.value)
+        setAddedComment(e.target.value)
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        setAddedComment(input)
+        postComment(article_id, addedComment, loggedInUser)
+            .then(({response}) => {
+                setPost(response)
+                setAddedComment("")
+            })
+        
+
     }
+    console.log(post)
+
     return <form onSubmit={handleSubmit}>
-        <input onChange={handleInputChange} type='text' placeholder="add a comment" >
+        <input value={addedComment} onChange={handleInputChange} type='text' placeholder="add a comment" >
         </input>  &nbsp;
-        {input !== '' ? <button  type="submit"><IoSendOutline /></button>: null }
+        {addedComment !== '' ? <button type="submit"><IoSendOutline /></button> : null}
     </form>
 }
