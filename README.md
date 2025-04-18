@@ -1,7 +1,7 @@
 # NC-newz (FRONT-END)
 
 - Hosted on Netlify: (in progress)
-- API Server Hosted on Render: https://nc-newz-u95l.onrender.com
+- API Server Hosted on Render: https://nc-newz-u95l.onrender.com/api
 - Backend repo: [NC-newz-backend](https://github.com/bbell2411/NC-news)
 
 # Project Overview 
