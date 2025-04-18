@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import { getComments, getUser } from "./api"
-import { Link, useParams } from "react-router-dom"
-import { AddComment } from "./AddComment"
+import { IoIosArrowBack } from "react-icons/io";
+import { AddComment } from "./AddComment";
 
 
-export const CommentCard = ({ addedComment, setAddedComment }) => {
+export const AllCommentsCard = ({ addedComment, setAddedComment }) => {
+    const [allComments, setAllComments] = useState([])
+
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
-    const [comments, setComments] = useState([])
-    const [userImg, setUserImg] = useState([])
 
+    const [userImg, setUserImg] = useState([])
     const { article_id } = useParams()
 
     useEffect(() => {
+        setIsLoading(true)
         getUser().then((users) => {
             setUserImg(users)
         })
@@ -27,7 +30,7 @@ export const CommentCard = ({ addedComment, setAddedComment }) => {
     useEffect(() => {
         setIsLoading(true)
         getComments(article_id).then((comment) => {
-            setComments(comment)
+            setAllComments(comment)
         })
             .catch((err) => {
                 setError(true)
@@ -37,21 +40,16 @@ export const CommentCard = ({ addedComment, setAddedComment }) => {
             })
     }, [article_id])
 
-    const visibleComments = []
-
-    if (comments.length > 4) {
-        visibleComments.push(comments[0], comments[1], comments[2], comments[3])
-    }
     if (isLoading) return <div className="loader-container"><h1 className="loader"></h1></div>
 
     if (error) return <p className="error">something went wrong</p>
 
-    return (<div>
-        <a href="/" className="comment-button"> <i className="fa fa-home home-icon"></i> Home</a>  &nbsp; &nbsp; &nbsp;
-        <a href={`/articles/${article_id}`} className="back-button">Back to Post</a> <br /> <br />
+    return <div>
+        <a href={`/articles/${article_id}/comments`} className="add-comment-button"><IoIosArrowBack /></a>
 
         <AddComment addedComment={addedComment} setAddedComment={setAddedComment} />
-        {visibleComments.map((comment) => {
+
+        {allComments.map((comment) => {
             const userPfpArr = userImg.map((user) => {
                 return user.username === comment.author ? user.avatar_url : null
             })
@@ -71,8 +69,5 @@ export const CommentCard = ({ addedComment, setAddedComment }) => {
                 </section>
             </div>
         })}
-        {comments.length < 5 ? null : <Link className="all-comments" to={`/articles/${article_id}/comments/all-comments`}>see all comments</Link>}
-
     </div>
-    )
 }
