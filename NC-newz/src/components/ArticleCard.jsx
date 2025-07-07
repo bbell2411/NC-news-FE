@@ -8,7 +8,7 @@ export const ArticleCard = ({ article, userImage }) => {
     const [optimisticVotes, setOptimisticVotes] = useState(0)
     const [userVote, setUserVote] = useState(0)
 
-    const { article_id } = useParams()
+    const { article_id } = article
 
     const userPfpArr = userImage.map((user) => {
         return user.username === article.author ? user.avatar_url : null
@@ -20,33 +20,24 @@ export const ArticleCard = ({ article, userImage }) => {
         }
     }
 
-    const handleUpVote = () => {
+    const handleVote = () => {
         if (userVote === 1) {
-            setOptimisticVotes((currVotes) => currVotes - 1)
-            setUserVote(0)
+            setOptimisticVotes((curr) => curr - 1);
+            setUserVote(0);
+            updateVotes(article_id, -1).catch(() => {
+                setOptimisticVotes((curr) => curr + 1);
+                setUserVote(1);
+            });
         } else {
-            setOptimisticVotes((currVotes) => currVotes + (userVote === -1 ? 2 : 1))
-            setUserVote(1)
+            setOptimisticVotes((curr) => curr + 1);
+            setUserVote(1);
+            updateVotes(article_id, 1).catch(() => {
+                setOptimisticVotes((curr) => curr - 1);
+                setUserVote(0);
+            });
         }
-        updateVotes(article_id).catch(() => {
-            setOptimisticVotes((currVotes) => currVotes - 1)
-            setUserVote(0)
-        });
     };
 
-    const handleDownVote = () => {
-        if (userVote === -1) {
-            setOptimisticVotes((currVotes) => currVotes + 1)
-            setUserVote(0)
-        } else {
-            setOptimisticVotes((currVotes) => currVotes - (userVote === 1 ? 2 : 1))
-            setUserVote(-1)
-        }
-        updateVotes(article_id).catch(() => {
-            setOptimisticVotes((currVotes) => currVotes + 1)
-            setUserVote(0)
-        });
-    };
 
     return (
 
@@ -55,9 +46,20 @@ export const ArticleCard = ({ article, userImage }) => {
             <Link className='comment-button' to={`/articles/${article.article_id}/comments`}><FaCommentDots />   {article.comment_count}</Link>
             <h1 className="article-title">{article.title}</h1>
             <p className="article-meta">
-                {profilePic !== '' ? <img src={profilePic} alt="user's profile image" /> : null}
+                {profilePic ? <img src={profilePic} alt="user's profile image" /> : null}
                 {article.author} | {article.topic} | {article.created_at}  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button className='icon-link' onClick={handleUpVote}> <SlLike /></button> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button className='icon-link' onClick={handleDownVote}><SlDislike /></button>
+                <button className="icon-link" onClick={handleVote}>
+                    {userVote === 1 ? (
+                        <>
+                            <SlDislike /> Unlike
+                        </>
+                    ) : (
+                        <>
+                            <SlLike /> Like
+                        </>
+                    )}
+                </button>
+
             </p>
             <img
                 className="article-image"
