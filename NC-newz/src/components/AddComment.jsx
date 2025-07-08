@@ -17,18 +17,16 @@ export const AddComment = ({ addedComment, setAddedComment }) => {
         e.preventDefault()
         postComment(article_id, addedComment, loggedInUser)
             .then((postedComment) => {
-                // console.log(postedComment,"inside add comment")
+                console.log(postedComment)
                 setPost(postedComment)
                 setAddedComment("")
             })
-        
-
     }
-    console.log(addedComment,"added")
-    console.log(post,"loggin post")
-
     return <form onSubmit={handleSubmit}>
         <input  id="comment-input" value={addedComment} onChange={handleInputChange} type='text' placeholder="add a comment" >
+
+    return <form onSubmit={handleSubmit}>
+        <input value={addedComment} onChange={handleInputChange} type='text' placeholder="add a comment" >
         </input>  &nbsp;
         {addedComment !== '' ? <button type="submit"><IoSendOutline /></button> : null}
     </form>
