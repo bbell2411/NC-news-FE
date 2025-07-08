@@ -16,8 +16,9 @@ export const AddComment = ({ addedComment, setAddedComment }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         postComment(article_id, addedComment, loggedInUser)
-            .then(({response}) => {
-                setPost(response)
+            .then((postedComment) => {
+                console.log(postedComment)
+                setPost(postedComment)
                 setAddedComment("")
             })
         
