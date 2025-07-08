@@ -22,10 +22,8 @@ export const AddComment = ({ addedComment, setAddedComment }) => {
                 setAddedComment("")
             })
     }
-    return <form onSubmit={handleSubmit}>
-        <input  id="comment-input" value={addedComment} onChange={handleInputChange} type='text' placeholder="add a comment" >
 
-    return <form onSubmit={handleSubmit}>
+    return <form id="comment-input" onSubmit={handleSubmit}>
         <input value={addedComment} onChange={handleInputChange} type='text' placeholder="add a comment" >
         </input>  &nbsp;
         {addedComment !== '' ? <button type="submit"><IoSendOutline /></button> : null}
