@@ -21,10 +21,9 @@ export const AddComment = ({ addedComment, setAddedComment }) => {
                 setPost(postedComment)
                 setAddedComment("")
             })
-        
-
     }
-    console.log(post)
+    return <form onSubmit={handleSubmit}>
+        <input  id="comment-input" value={addedComment} onChange={handleInputChange} type='text' placeholder="add a comment" >
 
     return <form onSubmit={handleSubmit}>
         <input value={addedComment} onChange={handleInputChange} type='text' placeholder="add a comment" >

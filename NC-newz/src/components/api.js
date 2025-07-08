@@ -49,7 +49,7 @@ export const postComment = (article_id, addedComment, loggedInUser) => {
                 return data
             })
             .catch((error) => {
-                console.error('Error posting comment:', error.response ? error.response.data : error.message);
-            });
+                console.error('Error posting comment:', error.response ? error.response.data : error.message)
+            })
     }
 
