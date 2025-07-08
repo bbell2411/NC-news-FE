@@ -1,7 +1,8 @@
 # NC-newz (FRONT-END)
 
-- Hosted on Render: (in progress)
-- API Server: [NC-newz-backend](https://github.com/bbell2411/NC-news)
+- Hosted on Netlify: (in progress)
+- API Server Hosted on Render: https://nc-newz-u95l.onrender.com/api
+- Backend repo: [NC-newz-backend](https://github.com/bbell2411/NC-news)
 
 # Project Overview 
 NC newz is a Reddit-style news application where users can browse articles, view individual articles, up-vote/down-vote and leave comments. It is a full-stack project built with React, Express, PostgreSQL and axios.
