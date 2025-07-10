@@ -42,14 +42,9 @@ export const updateVotes = (article_id) => {
 }
 
 export const postComment = (article_id, addedComment, loggedInUser) => {
-    console.log('were in', loggedInUser, article_id, addedComment)
         return newsApi.post(`/articles/${article_id}/comments`, { username: loggedInUser, body: addedComment })
             .then(({ data }) => {
-                console.log('were in again')
                 return data
-            })
-            .catch((error) => {
-                console.error('Error posting comment:', error.response ? error.response.data : error.message)
             })
     }
 
