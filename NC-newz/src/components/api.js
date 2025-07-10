@@ -44,7 +44,7 @@ export const updateVotes = (article_id) => {
 export const postComment = (article_id, addedComment, loggedInUser) => {
         return newsApi.post(`/articles/${article_id}/comments`, { username: loggedInUser, body: addedComment })
             .then(({ data }) => {
-                return data
+                return data.postedComment
             })
     }
 

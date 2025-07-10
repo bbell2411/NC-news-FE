@@ -4,9 +4,7 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../../Contexts/User";
 import { postComment } from "./api";
 
-export const AddComment = ({ addedComment, setAddedComment }) => {
-    const [post, setPost]= useState({})
-    
+export const AddComment = ({ addedComment, setAddedComment, comments, setComments }) => {
     const { article_id } = useParams()
     const { loggedInUser } = useContext(UserContext)
 
@@ -17,7 +15,8 @@ export const AddComment = ({ addedComment, setAddedComment }) => {
         e.preventDefault()
         postComment(article_id, addedComment, loggedInUser)
             .then((postedComment) => {
-                setPost(postedComment)
+                console.log('postedComment', postedComment)
+                setComments((currComments) => [postedComment, ...currComments])
                 setAddedComment("")
             })
     }

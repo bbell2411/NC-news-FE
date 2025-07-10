@@ -50,7 +50,12 @@ export const CommentCard = ({ addedComment, setAddedComment }) => {
         <a href="/" className="comment-button"> <i className="fa fa-home home-icon"></i> Home</a>  &nbsp; &nbsp; &nbsp;
         <a href={`/articles/${article_id}`} className="back-button">Back to Post</a> <br /> <br />
 
-        <AddComment addedComment={addedComment} setAddedComment={setAddedComment} />
+        <AddComment
+            addedComment={addedComment}
+            setAddedComment={setAddedComment}
+            setComments={setComments}
+            comments={comments}
+        />
         {visibleComments.map((comment) => {
             const userPfpArr = userImg.map((user) => {
                 return user.username === comment.author ? user.avatar_url : null
@@ -76,3 +81,5 @@ export const CommentCard = ({ addedComment, setAddedComment }) => {
     </div>
     )
 }
+//fix votes
+//fix commentss
