@@ -47,7 +47,12 @@ export const AllCommentsCard = ({ addedComment, setAddedComment }) => {
     return <div>
         <a href={`/articles/${article_id}/comments`} className="add-comment-button"><IoIosArrowBack /></a>
 
-        <AddComment addedComment={addedComment} setAddedComment={setAddedComment} />
+        <AddComment
+            addedComment={addedComment}
+            setAddedComment={setAddedComment}
+            setComments={setAllComments}
+            comments={allComments}
+        />
 
         {allComments.map((comment) => {
             const userPfpArr = userImg.map((user) => {
