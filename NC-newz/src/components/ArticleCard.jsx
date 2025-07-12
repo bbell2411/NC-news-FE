@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { FaCommentDots } from "react-icons/fa";
 import { SlDislike, SlLike } from "react-icons/sl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { updateVotes } from "./api";
 
 export const ArticleCard = ({ article, userImage }) => {
@@ -19,24 +19,45 @@ export const ArticleCard = ({ article, userImage }) => {
             profilePic = userPfpArr[i]
         }
     }
+    useEffect(() => {
+        const votes = JSON.parse(localStorage.getItem("votedArticles")) || {}
+        if (votes[article_id]) setUserVote(1)
+    }, [article_id])
 
     const handleVote = () => {
+        const storedVotes = JSON.parse(localStorage.getItem('votedArticles')) || {}
+
         if (userVote === 1) {
-            setOptimisticVotes((curr) => curr - 1);
-            setUserVote(0);
+            setOptimisticVotes((curr) => curr - 1)
+            setUserVote(0)
+
+            delete storedVotes[article_id]
+            localStorage.setItem('votedArticles', JSON.stringify(storedVotes))
+
             updateVotes(article_id, -1).catch(() => {
-                setOptimisticVotes((curr) => curr + 1);
-                setUserVote(1);
-            });
+                setOptimisticVotes((curr) => curr + 1)
+                setUserVote(1)
+
+                storedVotes[article_id] = true
+                localStorage.setItem('votedArticles', JSON.stringify(storedVotes))
+            })
         } else {
-            setOptimisticVotes((curr) => curr + 1);
-            setUserVote(1);
+            setOptimisticVotes((curr) => curr + 1)
+            setUserVote(1)
+
+            storedVotes[article_id] = true
+            localStorage.setItem('votedArticles', JSON.stringify(storedVotes))
+
             updateVotes(article_id, 1).catch(() => {
-                setOptimisticVotes((curr) => curr - 1);
-                setUserVote(0);
-            });
+                setOptimisticVotes((curr) => curr - 1)
+                setUserVote(0)
+
+                delete storedVotes[article_id];
+                localStorage.setItem('votedArticles', JSON.stringify(storedVotes))
+            })
         }
-    };
+    }
+
 
 
     return (
