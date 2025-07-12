@@ -15,7 +15,6 @@ export const AddComment = ({ addedComment, setAddedComment, comments, setComment
         e.preventDefault()
         postComment(article_id, addedComment, loggedInUser)
             .then((postedComment) => {
-                console.log('postedComment', postedComment)
                 setComments((currComments) => [postedComment, ...currComments])
                 setAddedComment("")
             })
