@@ -385,13 +385,32 @@ button i {
 }
 .comment-header {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 5px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.comment-date {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.comment-delete {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.comment-delete:hover {
+  opacity: 1;
 }
 .comment-user {
   font-weight: bold;
+}
+.comment-actions {
+  margin-left: auto
 }
 .icon-link {
   color: #ffffff;
