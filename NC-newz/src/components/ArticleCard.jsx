@@ -13,7 +13,7 @@ export const ArticleCard = ({ article, userImage }) => {
     useEffect(() => {
         const savedVote = localStorage.getItem(`voted-${article_id}`);
         if (savedVote === '1') {
-            setUserVote(1);
+            setUserVote(1)
         }
     }, [article_id])
 
@@ -72,5 +72,5 @@ export const ArticleCard = ({ article, userImage }) => {
             <p className="article-body">{article.body}</p>
             <p className="article-votes">Votes: {article.votes + optimisticVotes} | Comments: {article.comment_count}</p>
         </div>
-    );
+    )
 }
