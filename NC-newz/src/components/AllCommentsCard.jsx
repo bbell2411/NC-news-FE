@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getComments, getUser } from "./api"
+import { deleteComment, getComments, getUser } from "./api"
 import { IoIosArrowBack } from "react-icons/io";
 import { AddComment } from "./AddComment";
+import { UserContext } from "../../Contexts/User";
+import bin from "../assets/images/bin.png"
 
 
 export const AllCommentsCard = ({ addedComment, setAddedComment }) => {
@@ -13,6 +15,7 @@ export const AllCommentsCard = ({ addedComment, setAddedComment }) => {
 
     const [userImg, setUserImg] = useState([])
     const { article_id } = useParams()
+    const { loggedInUser } = useContext(UserContext)
 
     useEffect(() => {
         setIsLoading(true)
@@ -39,6 +42,19 @@ export const AllCommentsCard = ({ addedComment, setAddedComment }) => {
                 setIsLoading(false)
             })
     }, [article_id])
+
+    const handleDelete = (id) => {
+        const confirmed = window.confirm("Are you sure you want to delete this comment?")
+        if (!confirmed) return
+        setAllComments((currComments) => currComments.filter(comment => comment.comment_id !== id))
+        deleteComment(id)
+            .then(() => {
+                alert("Comment deleted successfully.")
+            })
+            .catch((err) => {
+                alert("Failed to delete comment.")
+            })
+    }
 
     if (isLoading) return <div className="loader-container"><h1 className="loader"></h1></div>
 
@@ -69,6 +85,15 @@ export const AllCommentsCard = ({ addedComment, setAddedComment }) => {
                     <div className="comment-header">
                         {profilePic !== '' ? <img src={profilePic} alt="user's profile image" /> : null}
                         <p className="comment-user">{comment.author}</p>
+                        <p className="comment-date">{new Date(comment.created_at).toLocaleDateString()}</p>
+                        {comment.author === loggedInUser && (
+                            <div className="comment-actions">
+                                <img
+                                    className="comment-delete" src={bin} alt="delete-comment"
+                                    onClick={() => { handleDelete(comment.comment_id) }}
+                                />
+                            </div>
+                        )}
                     </div>
                     <p> {comment.body}</p>
                 </section>
