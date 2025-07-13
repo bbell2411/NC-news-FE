@@ -81,5 +81,3 @@ export const CommentCard = ({ addedComment, setAddedComment }) => {
     </div>
     )
 }
-//fix votes
-//fix commentss

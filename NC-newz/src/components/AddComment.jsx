@@ -23,6 +23,6 @@ export const AddComment = ({ addedComment, setAddedComment, comments, setComment
     return <form id="comment-input" onSubmit={handleSubmit}>
         <input value={addedComment} onChange={handleInputChange} type='text' placeholder="add a comment" >
         </input>  &nbsp;
-        {addedComment !== '' ? <button type="submit"><IoSendOutline /></button> : null}
+        {addedComment.trim() !== '' ? <button type="submit"><IoSendOutline /></button> : null}
     </form>
 }
