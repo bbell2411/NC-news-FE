@@ -10,6 +10,28 @@ export const ArticleCard = ({ article, userImage }) => {
 
     const { article_id } = article
 
+    useEffect(() => {
+        const savedVote = localStorage.getItem(`voted-${article_id}`);
+        if (savedVote === '1') {
+            setUserVote(1);
+        }
+    }, [article_id])
+
+
+    const handleVote = () => {
+        if (userVote === 1) {
+            setOptimisticVotes((currentVotes) => currentVotes - 1)
+            setUserVote(0)
+            updateVotes(article_id, -1)
+            localStorage.removeItem(`voted-${article_id}`)
+        } else {
+            setOptimisticVotes((currentVotes) => currentVotes + 1)
+            setUserVote(1)
+            updateVotes(article_id, 1)
+            localStorage.setItem(`voted-${article_id}`, '1')
+        }
+    }
+
     const userPfpArr = userImage.map((user) => {
         return user.username === article.author ? user.avatar_url : null
     })
@@ -19,46 +41,6 @@ export const ArticleCard = ({ article, userImage }) => {
             profilePic = userPfpArr[i]
         }
     }
-    useEffect(() => {
-        const votes = JSON.parse(localStorage.getItem("votedArticles")) || {}
-        if (votes[article_id]) setUserVote(1)
-    }, [article_id])
-
-    const handleVote = () => {
-        const storedVotes = JSON.parse(localStorage.getItem('votedArticles')) || {}
-
-        if (userVote === 1) {
-            setOptimisticVotes((curr) => curr - 1)
-            setUserVote(0)
-
-            delete storedVotes[article_id]
-            localStorage.setItem('votedArticles', JSON.stringify(storedVotes))
-
-            updateVotes(article_id, -1).catch(() => {
-                setOptimisticVotes((curr) => curr + 1)
-                setUserVote(1)
-
-                storedVotes[article_id] = true
-                localStorage.setItem('votedArticles', JSON.stringify(storedVotes))
-            })
-        } else {
-            setOptimisticVotes((curr) => curr + 1)
-            setUserVote(1)
-
-            storedVotes[article_id] = true
-            localStorage.setItem('votedArticles', JSON.stringify(storedVotes))
-
-            updateVotes(article_id, 1).catch(() => {
-                setOptimisticVotes((curr) => curr - 1)
-                setUserVote(0)
-
-                delete storedVotes[article_id];
-                localStorage.setItem('votedArticles', JSON.stringify(storedVotes))
-            })
-        }
-    }
-
-
 
     return (
 
