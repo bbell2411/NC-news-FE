@@ -498,14 +498,20 @@ button i {
   border-radius: 8px;
   transition: background-color 0.3s ease;
 }
+.topics-page {
+  padding-top: 6rem; 
+  padding-inline: 2rem;
+  min-height: 100vh;
+  background-color: #242424; 
+}
 .topics-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  max-width: 1200px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  padding: 2rem;
-  list-style: none;
-  margin: 0 auto;
-  max-width: 1200px;
 }
 
 .topic-item {

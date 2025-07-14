@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { getTopics } from "./api"
+const placeholderImage = "https://superblog.supercdn.cloud/site_cuid_clvc4016q001j13bhaleswmt1/images/12-1717012195121-compressed.jpg"
 
 export const ViewTopics = () => {
     const [topics, setTopics] = useState([])
@@ -25,17 +26,21 @@ export const ViewTopics = () => {
 
     if (isError) return <p className="error">something went wrong</p>
 
-    return(
-        <ul className="topics-list">
-            {topics.map((topic) => {
-                return (
+    return (
+        <section className="topics-page">
+            <ul className="topics-list">
+                {topics.map((topic) => (
                     <li className="topic-item" key={topic.slug}>
                         <p className="topic-name">{topic.slug}</p>
                         <p className="topic-description">{topic.description}</p>
-                        <img className="topic-image" src={topic.img_url} alt={`${topic.slug} icon`} />
+                        <img
+                            className="topic-image"
+                            src={topic.img_url ? topic.img_url : placeholderImage}
+                            alt={`${topic.slug} icon`}
+                        />
                     </li>
-                )
-            })}
-        </ul>
+                ))}
+            </ul>
+        </section>
     )
 }
