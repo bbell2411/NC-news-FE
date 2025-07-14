@@ -15,8 +15,7 @@ export const SearchBar = ({ setSearchTerm }) => {
     return <div className="search-header">
         <a href="/all-topics" className="topics-link">Topics</a>
         <form onSubmit={handleSubmit}>
-            <label className="search-bar">Explore</label>
-            <input onChange={handleChange} className="input"></input>
+            <input onChange={handleChange} placeholder="Explore" className="input"></input>
             <button type="submit" ><i className="fa fa-search"></i></button>
         </form>
     </div>

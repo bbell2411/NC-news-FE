@@ -27,18 +27,42 @@ a:hover {
   cursor: pointer;
 }
 
+.logo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.75rem;
+}
+
 .logo {
-  height: 50px;
+  height: 65px;
   width: auto;
-  margin-right: 1rem;
-  vertical-align: middle;
   transition: transform 0.3s ease;
-  cursor: pointer;
 }
 
 .logo:hover {
-  transform: rotate(-5deg) scale(1.05);
+  transform: scale(1.05) rotate(-3deg);
 }
+
+.site-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1659cc;
+  transition: color 0.3s ease;
+}
+
+.logo-brand:hover .site-title {
+  color: #0077cc;
+}
+
 
 body {
   margin: 0;
@@ -189,25 +213,27 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-.profile-pic {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-left: 10px;
-}
 .user-container {
   display: flex;
-  align-items: center;
-  gap: 8px; 
-  padding: 5px 10px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  align-items: center; 
+  gap: 0.5rem;      
+  position: absolute;
+  top: 1rem;           
+  right: 1rem;           
 }
 
-.user-container:hover {
-  background-color: #f0f0f0; 
+.profile-pic {
+  width: 40px;       
+  height: 40px;
+  border-radius: 50%;  
+  object-fit: cover;
+  border: 2px solid #007bff
+}
+
+.username {
+  font-weight: 600;
+  color: #007bff;
+  font-size: 1rem;
 }
 .header {
   font-family: Verdana,Sans-serif;
@@ -224,16 +250,6 @@ button:focus-visible {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.username {
-  font-size: 1.2rem;
-  color: #555;
-  margin-left: auto;
-  padding: 0.5rem 1rem;
-  background-color: #e0e0e0;
-  border-radius: 20px;
-  display: inline-block;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 .loader-container {
   display: flex;
   justify-content: center;
@@ -339,12 +355,12 @@ button:focus-visible {
   color: #6c757d;
   margin-top: 10px;
 }
-.search-bar {
+/* .search-bar {
   font-size: 1.2rem;
   font-weight: bold;
   margin-right: 0.5rem;
   color: #333;
-}
+} */
 
 .form {
   display: flex;
