@@ -17,10 +17,27 @@
 a {
   font-weight: 500;
   color: #646cff;
-  text-decoration: inherit;
+  text-decoration: none;  
+  transition: color 0.3s ease, transform 0.2s ease;
 }
+
 a:hover {
-  color: #535bf2;
+  color: #0077cc;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  margin-right: 1rem;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: rotate(-5deg) scale(1.05);
 }
 
 body {
@@ -42,6 +59,43 @@ h1 {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.search-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem; 
+  margin: 1rem 0;
+}
+
+.topics-link {
+  padding: 0.5rem 1rem;
+  background-color: #f0f4f8;
+  color: #0077cc;
+  border: 2px solid #0077cc;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.topics-link:hover {
+  background-color: #0077cc;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 119, 204, 0.3);
+  transform: translateY(-2px);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 .article-title {
@@ -243,7 +297,7 @@ button:focus-visible {
 }
 
 .clickable:hover {
-  color: #007bff; /* Change to your preferred color */
+  color: #007bff; 
   text-decoration: underline;
 }
 

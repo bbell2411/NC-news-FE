@@ -8,6 +8,7 @@ import { HomePosts } from './components/HomePosts'
 import { SingleArticle } from './components/SingleArticle';
 import { CommentCard } from './components/CommentCard';
 import { AllCommentsCard } from './components/AllCommentsCard';
+import { ViewTopics } from './components/ViewTopics';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState([])
@@ -21,6 +22,7 @@ function App() {
       <Route path='/articles/:article_id' element={<SingleArticle article={article} setArticle={setArticle} userImage={userImage} setUserImage={setUserImage} />}></Route>
       <Route path='/articles/:article_id/comments' element={<CommentCard  addedComment={addedComment} setAddedComment={setAddedComment} />}></Route>
       <Route path='/articles/:article_id/comments/all-comments' element={<AllCommentsCard addedComment={addedComment} setAddedComment={setAddedComment} />}></Route>
+      <Route path="/all-topics" element={<ViewTopics/>}></Route>
     </Routes>
     </UserProvider>
 

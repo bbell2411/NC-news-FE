@@ -1,12 +1,15 @@
 import { useContext, useState } from "react"
 import { SearchBar } from "./SearchBar"
 import { UserContext } from "../../Contexts/User"
-
-export const Header = ({setSearchTerm}) => {
+import logo from '../assets/images/logo.png'
+export const Header = ({ setSearchTerm }) => {
     const { loggedInUser } = useContext(UserContext)
 
     return <section>
-        <h1 className="header">NC News</h1>
+        <a href="/">
+            <img className="logo" src={logo} alt="NC News logo" />
+        </a>
+        <a href="/" className="header">NC News</a>
         <div className="user-container">
             <img src='https://pbs.twimg.com/media/ErnRoKiXMAIqwGf.jpg' alt="user profile image" className="profile-pic" />
             <h3 className="username">{loggedInUser}</h3>

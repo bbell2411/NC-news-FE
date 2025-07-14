@@ -1,6 +1,7 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
-export const SearchBar = ({setSearchTerm}) => {
+export const SearchBar = ({ setSearchTerm }) => {
     const [input, setInput] = useState([])
 
     const handleChange = (e) => {
@@ -11,10 +12,13 @@ export const SearchBar = ({setSearchTerm}) => {
         e.preventDefault()
         setSearchTerm(input)
     }
-    return <form onSubmit={handleSubmit}>
-        <label className="search-bar">Explore</label>
-        <input onChange={handleChange} className="input"></input>
-        <button type="submit" ><i className="fa fa-search"></i></button>
-    </form>
+    return <div className="search-header">
+        <a href="/all-topics" className="topics-link">Topics</a>
+        <form onSubmit={handleSubmit}>
+            <label className="search-bar">Explore</label>
+            <input onChange={handleChange} className="input"></input>
+            <button type="submit" ><i className="fa fa-search"></i></button>
+        </form>
+    </div>
 }
 
