@@ -227,7 +227,7 @@ button:focus-visible {
   height: 40px;
   border-radius: 50%;  
   object-fit: cover;
-  border: 2px solid #007bff
+  border: none;
 }
 
 .username {
@@ -550,7 +550,7 @@ button i {
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #646cff;
+  border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-top: auto;
   transition: transform 0.3s ease;
@@ -558,4 +558,10 @@ button i {
 
 .topic-item:hover .topic-image {
   transform: scale(1.05) rotate(3deg);
+}
+#placement-bb {
+  position: fixed;
+  top: 10rem;
+  left: 10rem;
+  z-index: 1000;
 }
