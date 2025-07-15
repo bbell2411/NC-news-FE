@@ -3,10 +3,15 @@ import { FaCommentDots } from "react-icons/fa";
 import { SlDislike, SlLike } from "react-icons/sl";
 import { useEffect, useState } from "react";
 import { updateVotes } from "./api";
+import { useLocation } from "react-router-dom"
+
 
 export const ArticleCard = ({ article, userImage }) => {
     const [optimisticVotes, setOptimisticVotes] = useState(0)
     const [userVote, setUserVote] = useState(0)
+
+    const location = useLocation();
+    const fromTopic = location.state?.fromTopic
 
     const { article_id } = article
 
@@ -45,7 +50,10 @@ export const ArticleCard = ({ article, userImage }) => {
     return (
 
         <div className="article-container">
-            <a href="/" className="comment-button"> <i className="fa fa-home home-icon"></i> Home</a>  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+            {fromTopic ?
+                <Link className="comment-button" to={`/all-topics/${fromTopic}`}>←</Link> :
+                <a href="/" className="comment-button"> <i className="fa fa-home home-icon"></i> Home</a>}
+            &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
             <Link className='comment-button' to={`/articles/${article.article_id}/comments`}><FaCommentDots />   {article.comment_count}</Link>
             <h1 className="article-title">{article.title}</h1>
             <p className="article-meta">

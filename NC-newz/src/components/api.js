@@ -4,8 +4,12 @@ const newsApi = axios.create({
     baseURL: 'https://nc-newz-u95l.onrender.com/api'
 })
 
-export const getArticles = () => {
-    return newsApi.get('/articles')
+export const getArticles = ({topic}={}) => {
+    const params = new URLSearchParams()
+    
+    if (topic && topic!==undefined) params.append("topics", topic)
+
+    return newsApi.get(`/articles?${params.toString()}`)
         .then(({ data }) => {
             return data
         })
