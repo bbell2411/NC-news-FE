@@ -31,32 +31,35 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  flex-wrap: wrap;
+  padding: 1rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 850px; 
 }
 
 .logo-brand {
   display: flex;
   align-items: center;
-  text-decoration: none;
   gap: 0.75rem;
+  flex-shrink: 0; 
 }
 
 .logo {
   height: 65px;
   width: auto;
-  transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .logo:hover {
   transform: scale(1.05) rotate(-3deg);
 }
 
+
 .site-title {
   font-size: 2rem;
   font-weight: bold;
-  color: #1659cc;
-  transition: color 0.3s ease;
+  white-space: nowrap;
+  color: #0077cc ;
 }
 
 .logo-brand:hover .site-title {
@@ -218,22 +221,36 @@ button:focus-visible {
   align-items: center; 
   gap: 0.5rem;      
   position: absolute;
-  top: 1rem;           
-  right: 1rem;           
+  top: 4.5rem;           
+  right: 30rem;           
+}
+
+.search-bar-container {
+  flex-grow: 1; 
+  max-width: 400px; 
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  width: 180px; 
+  justify-content: flex-end;
 }
 
 .profile-pic {
-  width: 40px;       
   height: 40px;
-  border-radius: 50%;  
+  width: 40px;
+  border-radius: 50%;
   object-fit: cover;
-  border: none;
 }
 
 .username {
-  font-weight: 600;
-  color: #007bff;
-  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
 }
 .header {
   font-family: Verdana,Sans-serif;
@@ -624,4 +641,17 @@ button i {
   padding: 0.5rem 1rem;
   border-radius: 8px;
   cursor: pointer;
+}
+#topic-home {
+  top: 9.5rem;
+  right: 30rem;
+  z-index: 1000;
+  position: absolute;
+}
+.search-header {
+  gap: 1rem; 
+  margin: 1rem 0;
+  top: 9rem;
+  right: 31rem;
+  position: absolute;
 }

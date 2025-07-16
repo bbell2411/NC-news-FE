@@ -20,7 +20,6 @@ export const Header = ({ setSearchTerm }) => {
             <h3 className="username">{loggedInUser}</h3>
         </div>
 
-        <SearchBar setSearchTerm={setSearchTerm} />
     </section>
 
 }
