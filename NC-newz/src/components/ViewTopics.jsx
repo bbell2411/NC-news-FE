@@ -49,6 +49,3 @@ export const ViewTopics = () => {
         </section>
     )
 }
-
-//each topic naviagtes to a page w articles on that topic when clicked
-//add a back button to homepage
