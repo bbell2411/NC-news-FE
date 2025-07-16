@@ -218,13 +218,20 @@ button:focus-visible {
 }
 .user-container {
   display: flex;
-  align-items: center; 
-  gap: 0.5rem;      
+  align-items: center;
+  gap: 0.5rem;
   position: absolute;
-  top: 4.5rem;           
-  right: 30rem;           
+  top: 4.6rem;
+  right: 30rem;
 }
 
+@media (max-width: 768px) {
+  .user-container {
+    position: static;
+    margin: 1rem auto;
+    justify-content: center;
+  }
+}
 .search-bar-container {
   flex-grow: 1; 
   max-width: 400px; 
@@ -649,9 +656,20 @@ button i {
   position: absolute;
 }
 .search-header {
-  gap: 1rem; 
-  margin: 1rem 0;
-  top: 9rem;
-  right: 31rem;
-  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  position: relative;
+  top: 3.8rem;
+  right: -39rem;
+}
+
+@media (max-width: 600px) {
+  .search-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
 }
