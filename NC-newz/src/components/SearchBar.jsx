@@ -12,12 +12,5 @@ export const SearchBar = ({ setSearchTerm }) => {
         e.preventDefault()
         setSearchTerm(input)
     }
-    return <div className="search-header">
-        <a href="/all-topics" className="topics-link">Topics</a>
-        <form onSubmit={handleSubmit}>
-            <input onChange={handleChange} placeholder="Explore" className="input"></input>
-            <button type="submit" ><i className="fa fa-search"></i></button>
-        </form>
-    </div>
 }
 

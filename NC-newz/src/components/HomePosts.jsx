@@ -29,6 +29,9 @@ export const HomePosts = () => {
     if (isError) return <p className="error">something went wrong</p>
 
     return <section>
+        <div className="search-header">
+        <a href="/all-topics" className="topics-link">Topics</a>
+        </div>
         <div className="sort-controls">
             <label htmlFor="sort-select">Sort by: </label>
             <select
