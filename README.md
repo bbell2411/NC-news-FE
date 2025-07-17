@@ -1,50 +1,80 @@
-# NC-newz (FRONT-END)
+# NC-news (FRONT-END)
 
-- Hosted on Netlify: (in progress)
-- API Server Hosted on Render: https://nc-newz-u95l.onrender.com/api
-- Backend repo: [NC-newz-backend](https://github.com/bbell2411/NC-news)
+- 📍 Live App: [NC-news-netflify](https://bells-nc-news.netlify.app)
+- 🔗 Backend API: [NC-news-API](nc-newz-u95l.onrender.com/api)
+- 🛠 Backend Repo: [NC-news-backend](https://github.com/bbell2411/NC-news)
 
-# Project Overview 
-NC newz is a Reddit-style news application where users can browse articles, view individual articles, up-vote/down-vote and leave comments. It is a full-stack project built with React, Express, PostgreSQL and axios.
+# 💡 Project Overview 
 
-# Getting started locally
-- Node.js version v23.10.0 installed
-- PostgreSQL installed for backend
-- Git installed
+NC news is a Full-Stack project built with React/Vite, Express, PostgreSQL and axios. A Reddit-style news application It lets users explore a variety of articles by topic, interact through votes and comments, and read full articles with author info.
+
+# 🚀 Features
+
+- 🗂 Browse articles by topic
+
+- 📖 View full article content with metadata
+
+- 👍 Upvote / 👎 Downvote articles
+
+- 💬 Add your own comments
+
+- 🔍 Search articles by keyword
+
+- 📱 Responsive and mobile-friendly design
+
+# 🛠 Tech Stack
+
+- Frontend: React, Axios, CSS
+
+- Backend: Express, Node.js, PostgreSQL
+
+- Testing: Jest, Supertest
+
+- Hosting: Netlify (frontend), Render (backend)
+
+
+
+# 🧰 Getting Started Locally
+- Node.js (v18+ recommended)
+- Git
+- Backend & database setup (see backend repo [NC-newz-backend](https://github.com/bbell2411/NC-news))
 
  # Installation
- - Clone the repo locally with git clone <repo-url>
- - cd into repo then INSTALL DEPENDENCIES VIA TERMINAL (npm install)
+ ## Clone the frontend repo:
+ ```
+git clone <repo-url>
+cd NC-newz
+```
+## Install Dependancies:
+```
+npm install
+```
+## Start the local development server:
+```
+npm run dev
+```
+# 🧭 How to Use
 
-# Start the frontend 
-- command: npm run dev
-- The app will be running on a localhost url in the browser
+- Home Page: View all articles or filter by topic, date, votes, author, title.
 
-# Features 
-- Browse a list of articles by topic
-- View an individual article including title, image, body, votes, comments, and author information.
-- Up-vote and down-vote articles
-- Add comments to articles
-- Responsive, user-friendly design
+- Article View: Click on a title/image to view full article and comments.
 
-# How to use
-- Home page: explore other user's articles by scrolling.
-- Search Bar: Search articles by keywords or titles.
-- View article: Click on the image or title to read the full article and view it's comments.
-- Comments: add your own comments to express your opinion and join the discussion.
-- Votes: Use the like and Dislike buttons to up-vote or down-vote.
-- Navigation: easily return to the home page at any time.
+- Voting: Upvote or downvote to show support or disapproval.
 
-# Tech Stack
-- Frontend: React, Axios, CSS
-- Backend: Express, PostgreSQL, Node.js, Jest, supertest
-- Hosting: Render
+- Commenting: Leave your thoughts under each article.
 
-# Future improvements
-- Add user authentication
-- Allow users to change their profile image
-- Allow users to reply to individual comments
-- Allow users to block other users
-- Allow users like and dislike individual comments
+- Navigation: Easily return to the homepage using the header.
+
+# 🛠 Planned Improvements
+
+- 🔐 Add user authentication
+
+- 🖼 Allow users to change profile images
+
+- 💬 Enable replying to individual comments
+
+- 🚫 Block/unblock users
+
+- 👍 Like/dislike individual comments
 
 This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
