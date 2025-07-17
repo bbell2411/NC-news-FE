@@ -7,7 +7,7 @@
 NC newz is a Reddit-style news application where users can browse articles, view individual articles, up-vote/down-vote and leave comments. It is a full-stack project built with React, Express, PostgreSQL and axios.
 
 # Getting started locally
-- Node.js version v23.10.0 installed
+- Latest version of Node.js installed
 - PostgreSQL installed for backend
 - Git installed
 
@@ -45,5 +45,3 @@ NC newz is a Reddit-style news application where users can browse articles, view
 - Allow users to reply to individual comments
 - Allow users to block other users
 - Allow users like and dislike individual comments
-
-This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
